@@ -15,70 +15,97 @@ const Hero: React.FC = () => {
         }} />
       </div>
 
+      {/* Floating Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-32 h-32 bg-white/5 rounded-full blur-2xl animate-pulse animation-delay-200"></div>
+        <div className="absolute bottom-32 left-20 w-16 h-16 bg-white/10 rounded-full blur-xl animate-pulse animation-delay-400"></div>
+      </div>
+
       <div className="container-max section-padding relative z-10">
-        <div className="text-center text-white space-y-8">
-          {/* Avatar */}
-          <div className="flex justify-center mb-8">
-            <div className="w-32 h-32 rounded-full bg-white/20 backdrop-blur-sm border-4 border-white/30 flex items-center justify-center">
-              <div className="w-24 h-24 rounded-full bg-white/30 flex items-center justify-center text-4xl">
-                👮‍♀️
+        <div className="text-center text-white">
+          {/* Professional Avatar Section */}
+          <div className="flex justify-center mb-12">
+            <div className="relative">
+              <div className="w-40 h-40 rounded-full bg-white/20 backdrop-blur-sm border-4 border-white/30 flex items-center justify-center shadow-2xl">
+                <div className="w-32 h-32 rounded-full bg-white/30 flex items-center justify-center text-5xl">
+                  👮‍♀️
+                </div>
+              </div>
+              {/* Badge */}
+              <div className="absolute -bottom-2 -right-2 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                17+ Years
               </div>
             </div>
           </div>
 
-          {/* Main Content */}
-          <div className="space-y-6 max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              {profileInfo.name}
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-white/90 font-medium">
-              {profileInfo.title}
-            </p>
-            
-            <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-              {profileInfo.tagline}
-            </p>
+          {/* Main Content with Better Typography */}
+          <div className="space-y-8 max-w-5xl mx-auto">
+            {/* Name and Title */}
+            <div className="space-y-4">
+              <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tight">
+                {profileInfo.name}
+              </h1>
+
+              <div className="flex items-center justify-center space-x-4">
+                <div className="h-px bg-white/30 flex-1 max-w-20"></div>
+                <p className="text-xl md:text-2xl text-white/90 font-medium px-4">
+                  {profileInfo.title}
+                </p>
+                <div className="h-px bg-white/30 flex-1 max-w-20"></div>
+              </div>
+            </div>
+
+            {/* Tagline with Emphasis */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/20">
+              <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+                {profileInfo.tagline}
+              </p>
+            </div>
           </div>
 
-          {/* Quick Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+          {/* Enhanced Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-12">
             <Button
               href="https://calendly.com/appointmentrequest/1hour?month=2023-03"
               external
-              variant="secondary"
               size="lg"
-              className="bg-white text-blue-600 hover:bg-gray-100 flex items-center space-x-2"
+              className="bg-white text-blue-600 hover:bg-gray-100 hover:scale-105 transform transition-all duration-200 flex items-center space-x-3 px-8 py-4 shadow-xl"
             >
-              <Calendar size={20} />
-              <span>Book Appointment</span>
+              <Calendar size={22} />
+              <span className="font-semibold">Book Appointment</span>
             </Button>
-            
+
             <Button
               href={`https://wa.me/${contactInfo.whatsapp}`}
               external
               variant="outline"
               size="lg"
-              className="border-white text-white hover:bg-white hover:text-blue-600 flex items-center space-x-2"
+              className="border-2 border-white text-white hover:bg-white hover:text-blue-600 hover:scale-105 transform transition-all duration-200 flex items-center space-x-3 px-8 py-4 backdrop-blur-sm"
             >
-              <MessageCircle size={20} />
-              <span>Chat with Team</span>
+              <MessageCircle size={22} />
+              <span className="font-semibold">Chat with Team</span>
             </Button>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-white">17+</div>
-              <div className="text-white/80">Years Experience</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-white">500+</div>
-              <div className="text-white/80">Businesses Helped</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-white">30+</div>
-              <div className="text-white/80">Services Offered</div>
+          {/* Enhanced Stats Section */}
+          <div className="pt-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 text-center hover:bg-white/15 transition-all duration-200">
+                <div className="text-4xl font-bold text-white mb-2">17+</div>
+                <div className="text-white/80 font-medium">Years Experience</div>
+                <div className="text-white/60 text-sm mt-1">Business Optimization</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 text-center hover:bg-white/15 transition-all duration-200">
+                <div className="text-4xl font-bold text-white mb-2">500+</div>
+                <div className="text-white/80 font-medium">Businesses Helped</div>
+                <div className="text-white/60 text-sm mt-1">Across Industries</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 text-center hover:bg-white/15 transition-all duration-200">
+                <div className="text-4xl font-bold text-white mb-2">30+</div>
+                <div className="text-white/80 font-medium">Services Offered</div>
+                <div className="text-white/60 text-sm mt-1">Complete Solutions</div>
+              </div>
             </div>
           </div>
 

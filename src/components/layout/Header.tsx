@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import Button from '@/components/ui/Button';
+import Logo from '@/components/ui/Logo';
 import { cn } from '@/lib/utils';
 
 const Header: React.FC = () => {
@@ -22,8 +23,11 @@ const Header: React.FC = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="#home" className="text-xl font-bold text-blue-600">
-              The Structure Police
+            <a href="#home" className="flex items-center space-x-3">
+              <Logo size="md" />
+              <span className="text-xl font-bold text-blue-600">
+                The Structure Police
+              </span>
             </a>
           </div>
 

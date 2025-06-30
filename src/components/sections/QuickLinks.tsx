@@ -1,8 +1,13 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import { ExternalLink, Calendar, MessageCircle, ShoppingBag } from 'lucide-react';
 import Button from '@/components/ui/Button';
+import BusinessClinic from './BusinessClinic';
 
 const QuickLinks: React.FC = () => {
+  const [isBusinessClinicOpen, setIsBusinessClinicOpen] = useState(false);
+
   const quickLinks = [
     {
       title: 'Book an Appointment',
@@ -15,7 +20,7 @@ const QuickLinks: React.FC = () => {
     {
       title: 'Business Clinic 🩺',
       description: 'Problem-solving session',
-      url: 'https://paystack.com/buy/business-clinic-and-problem-solving-session-ctgaun',
+      action: 'embedded',
       icon: ShoppingBag,
       color: 'bg-green-500',
       featured: true
@@ -31,7 +36,8 @@ const QuickLinks: React.FC = () => {
     {
       title: 'View All Services',
       description: 'Browse complete catalog',
-      url: 'https://paystack.shop/h4orhelen',
+      action: 'scroll',
+      target: '#services',
       icon: ExternalLink,
       color: 'bg-purple-500'
     }
@@ -52,16 +58,25 @@ const QuickLinks: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {quickLinks.map((link, index) => {
             const IconComponent = link.icon;
+
+            const handleClick = () => {
+              if (link.action === 'embedded' && link.title.includes('Business Clinic')) {
+                setIsBusinessClinicOpen(true);
+              } else if (link.action === 'scroll' && link.target) {
+                document.querySelector(link.target)?.scrollIntoView({ behavior: 'smooth' });
+              } else if (link.url) {
+                window.open(link.url, '_blank');
+              }
+            };
+
             return (
               <div
                 key={index}
                 className={`relative group ${link.featured ? 'md:col-span-1' : ''}`}
               >
-                <a
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block p-6 bg-white rounded-xl border-2 border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 group-hover:scale-105"
+                <button
+                  onClick={handleClick}
+                  className="w-full text-left p-6 bg-white rounded-xl border-2 border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 group-hover:scale-105"
                 >
                   <div className="flex items-center space-x-4">
                     <div className={`${link.color} p-3 rounded-lg text-white flex-shrink-0`}>
@@ -75,12 +90,16 @@ const QuickLinks: React.FC = () => {
                         {link.description}
                       </p>
                     </div>
-                    <ExternalLink 
-                      size={16} 
-                      className="text-gray-400 group-hover:text-blue-600 transition-colors duration-200" 
-                    />
+                    {link.action === 'embedded' ? (
+                      <div className="w-4 h-4 bg-blue-600 rounded-full flex-shrink-0"></div>
+                    ) : (
+                      <ExternalLink
+                        size={16}
+                        className="text-gray-400 group-hover:text-blue-600 transition-colors duration-200"
+                      />
+                    )}
                   </div>
-                </a>
+                </button>
               </div>
             );
           })}
@@ -92,6 +111,12 @@ const QuickLinks: React.FC = () => {
           </Button>
         </div>
       </div>
+
+      {/* Business Clinic Modal */}
+      <BusinessClinic
+        isOpen={isBusinessClinicOpen}
+        onClose={() => setIsBusinessClinicOpen(false)}
+      />
     </section>
   );
 };
