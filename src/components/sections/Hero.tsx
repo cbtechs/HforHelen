@@ -15,12 +15,7 @@ const Hero: React.FC = () => {
         }} />
       </div>
 
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-32 h-32 bg-white/5 rounded-full blur-2xl animate-pulse animation-delay-200"></div>
-        <div className="absolute bottom-32 left-20 w-16 h-16 bg-white/10 rounded-full blur-xl animate-pulse animation-delay-400"></div>
-      </div>
+
 
       <div className="container-max section-padding relative z-10">
         <div className="text-center text-white">

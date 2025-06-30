@@ -5,7 +5,6 @@ import About from '@/components/sections/About';
 import Services from '@/components/sections/Services';
 import Portfolio from '@/components/sections/Portfolio';
 import Contact from '@/components/sections/Contact';
-import QuickLinks from '@/components/sections/QuickLinks';
 
 export default function Home() {
   return (
@@ -13,7 +12,6 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <QuickLinks />
         <About />
         <Services />
         <Portfolio />
