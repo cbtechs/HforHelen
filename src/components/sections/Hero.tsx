@@ -19,20 +19,7 @@ const Hero: React.FC = () => {
 
       <div className="container-max section-padding relative z-10">
         <div className="text-center text-white">
-          {/* Professional Avatar Section */}
-          <div className="flex justify-center mb-12">
-            <div className="relative">
-              <div className="w-40 h-40 rounded-full bg-white/20 backdrop-blur-sm border-4 border-white/30 flex items-center justify-center shadow-2xl">
-                <div className="w-32 h-32 rounded-full bg-white/30 flex items-center justify-center text-5xl">
-                  👮‍♀️
-                </div>
-              </div>
-              {/* Badge */}
-              <div className="absolute -bottom-2 -right-2 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                17+ Years
-              </div>
-            </div>
-          </div>
+
 
           {/* Main Content with Better Typography */}
           <div className="space-y-8 max-w-5xl mx-auto">
