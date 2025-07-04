@@ -1,0 +1,53 @@
+name: Mirror Repository to cbtechs
+
+on:
+  push:
+    branches: [ main, dev, feature/* ]
+  workflow_dispatch:
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch all history for all branches and tags
+        
+    - name: Setup Git
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        
+    - name: Add mirror remote
+      run: |
+        git remote add mirror https://github.com/cbtechs/HforHelen.git
+        
+    - name: Mirror to cbtechs repository
+      env:
+        GITHUB_TOKEN: ${{ secrets.MIRROR_TOKEN }}
+      run: |
+        # Configure git to use the token for authentication
+        git remote set-url mirror https://x-access-token:${GITHUB_TOKEN}@github.com/cbtechs/HforHelen.git
+        
+        echo "🔄 Mirroring repository to cbtechs/HforHelen..."
+        
+        # Push all branches
+        echo "📤 Pushing all branches..."
+        git push mirror --all --force
+        
+        # Push all tags
+        echo "🏷️  Pushing all tags..."
+        git push mirror --tags --force
+        
+        echo "✅ Repository successfully mirrored to cbtechs/HforHelen"
+        
+    - name: Notify on failure
+      if: failure()
+      run: |
+        echo "❌ Failed to mirror repository"
+        echo "Please check:"
+        echo "1. MIRROR_TOKEN secret is configured"
+        echo "2. Token has access to cbtechs/HforHelen repository"
+        echo "3. Repository exists on cbtechs account"

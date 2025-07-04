@@ -3,10 +3,11 @@ export interface ServiceLink {
   title: string;
   description?: string;
   url: string;
-  category: ServiceCategory;
+  category: ServiceCategoryType;
   price?: string;
   featured?: boolean;
   image?: string;
+  showProfile?: boolean;
 }
 
 export interface SocialLink {
@@ -31,7 +32,7 @@ export interface ProfileInfo {
   experience: string;
 }
 
-export type ServiceCategory = 
+export type ServiceCategoryType = 
   | 'consultation'
   | 'business-services'
   | 'training'
@@ -40,10 +41,11 @@ export type ServiceCategory =
   | 'communication';
 
 export interface ServiceCategory {
-  id: ServiceCategory;
+  id: ServiceCategoryType;
   name: string;
   description: string;
   icon: string;
+  image?: string;
 }
 
 export interface Testimonial {

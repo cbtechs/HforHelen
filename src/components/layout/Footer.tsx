@@ -96,7 +96,21 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Legal Links */}
+        <div className="mt-8">
+          <h4 className="text-lg font-semibold">Legal</h4>
+          <nav className="space-y-2">
+            <a href="/privacy-policy" className="block text-gray-300 hover:text-blue-400 transition-colors duration-200">
+              Privacy Policy
+            </a>
+            <a href="/terms-and-conditions" className="block text-gray-300 hover:text-blue-400 transition-colors duration-200">
+              Terms & Conditions
+            </a>
+            <a href="/refund-policy" className="block text-gray-300 hover:text-blue-400 transition-colors duration-200">
+              Refund Policy
+            </a>
+          </nav>
+        </div>
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400 text-sm">
             © {currentYear} The Structure Police - Helen. All rights reserved.
