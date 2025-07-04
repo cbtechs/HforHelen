@@ -1,10 +1,9 @@
 'use client';
 
 import React from 'react';
-import { ArrowDown, Calendar, MessageCircle, Award, Users, TrendingUp, Clock } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import { Award, Users, TrendingUp, Clock } from 'lucide-react';
 import Card from '@/components/ui/Card';
-import { profileInfo, contactInfo } from '@/data/content';
+import { profileInfo } from '@/data/content';
 
 const Hero: React.FC = () => {
   const achievements = [

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Mail, MessageCircle, Phone, MapPin, Calendar, Send } from 'lucide-react';
+import { Mail, MessageCircle, Calendar, Send } from 'lucide-react';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import { contactInfo } from '@/data/content';
